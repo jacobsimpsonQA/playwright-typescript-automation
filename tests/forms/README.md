@@ -9,6 +9,8 @@ This repo is Jacob Simpson's automation testing sandbox using [Playwright](https
 - Positive and negative assertions (`toBeVisible`, `not.toBeVisible`, `toContainText`)
 - Test structure using `test.describe()` and `beforeEach()` hooks
 - Form interaction and submission validation
+- Complete working form automation using https://selenium.dev/selenium/web/web-form.html
+
 
 ## 📂 Project Structure
 
