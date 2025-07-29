@@ -11,6 +11,15 @@ This repo is Jacob Simpson's automation testing sandbox using [Playwright](https
 - Form interaction and submission validation
 - Complete working form automation using https://selenium.dev/selenium/web/web-form.html
 
+## 🧪 Local Form Testing
+
+Includes tests for a custom offline form (`local_qa_form.html`) that validates:
+- Required field behavior
+- Positive flow (valid name + email)
+- Negative flows:
+  - Missing name
+  - Missing both fields
+
 
 ## 📂 Project Structure
 
