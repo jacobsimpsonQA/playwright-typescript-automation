@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jacobsimpsonQA/playwright-typescript-automation#readme",
   "devDependencies": {
+    "@playwright/test": "^1.54.1",
     "playwright": "^1.54.1"
   }
 }
