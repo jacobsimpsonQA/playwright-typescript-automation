@@ -13,6 +13,16 @@ test.describe('Local QA Form', () => {
     await expect(page.locator('#success')).toBeVisible();
   });
 
+  test('✅ Submits with special characters in the name field', async ({ page }) => {
+  await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+
+  await page.locator('#name').fill('Jacob <>');
+  await page.locator('#email').fill('jacob@example.com');
+  await page.getByRole('button', { name: 'Submit' }).click();
+
+  await expect(page.locator('#success')).toBeVisible();
+});
+
   test('❌ Does not show success if name is missing', async ({ page }) => {
     await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
 
@@ -31,5 +41,15 @@ test.describe('Local QA Form', () => {
 
     await expect(page.locator('#success')).not.toBeVisible();
   });
+
+  test('❌ Does not show success with invalid email format', async ({ page }) => {
+  await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+
+  await page.locator('#name').fill('Jacob');
+  await page.locator('#email').fill('jacob@'); // invalid
+  await page.getByRole('button', { name: 'Submit' }).click();
+
+  await expect(page.locator('#success')).not.toBeVisible();
+});
 
 });
