@@ -1,9 +1,17 @@
 import { test, expect } from '@playwright/test';
 
+const isCI = !!process.env.CI;
+
 test.describe('Local QA Form', () => {
+  test.skip(isCI, 'Skipping local form tests in CI (requires local file path)');
 
   test('✅ Submits when all required fields are filled', async ({ page }) => {
     await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+    ...
+  });
+
+  // All other local form tests here...
+});
 
     await page.locator('#name').fill('Jacob');
     await page.locator('#email').fill('jacob@example.com');
