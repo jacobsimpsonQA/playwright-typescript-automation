@@ -5,10 +5,6 @@ const isCI = !!process.env.CI;
 test.describe('Selenium Web Form Tests', () => {
   test('✅ Submits form successfully with all fields filled', async ({ page }) => {
     await page.goto('https://www.selenium.dev/selenium/web/web-form.html');
-    await page.waitForSelector('form', { state: 'visible' });
-  });
-
-  test('✅ Submits form successfully with all fields filled', async ({ page }) => {
     await page.locator('#my-text-id').fill('Jacob');
     await page.locator('[name="my-password"]').fill('Secret123!');
     await page.locator('[name="my-textarea"]').fill('Playwright test automation is 🔥');
@@ -19,7 +15,7 @@ test.describe('Selenium Web Form Tests', () => {
    
     await expect(page.locator('#message')).toHaveText('Received!');
   });
-  
+
  // Skip just this one test in CI
   (isCI ? test.skip : test)(
     '❌ Fails to submit when required password is missing',
