@@ -16,21 +16,22 @@ test.describe('Selenium Web Form Tests', () => {
     await page.locator('#my-radio-2').check();
     await page.locator('[name="my-select"]').selectOption('2');
     await page.locator('button[type="submit"]').click();
+   
     await expect(page.locator('#message')).toHaveText('Received!');
   });
+  
+ // Skip just this one test in CI
+  (isCI ? test.skip : test)(
+    '❌ Fails to submit when required password is missing',
+    async ({ page }) => {
+      await page.locator('#my-text-id').fill('Jacob');
+      // Password intentionally left blank
+      await page.locator('#my-textarea').fill('Testing negative case');
+      await page.locator('#my-check-1').check();
+      await page.locator('#my-select').selectOption('2');
+      await page.locator('button[type="submit"]').click();
 
-   test.skip(isCI, 'Skipping negative validation test in CI (selenium demo always returns "Received!")')
-    ('❌ Fails to submit when required password is missing', async ({ page }) => {
-    await page.locator('#my-text-id').fill('Jacob');
-    // Password intentionally left blank
-    await page.locator('[name="my-textarea"]').fill('Testing missing password.');
-    await page.locator('#my-check-1').check();
-    await page.locator('#my-radio-2').check();
-    await page.locator('[name="my-select"]').selectOption('2');
-    await page.locator('button[type="submit"]').click();
-    
-    // Expect NOT to see success message
-    await expect(page.locator('#message')).not.toBeVisible();
-  });
-
+      await expect(page.locator('#message')).not.toBeVisible();
+    }
+  );
 });
