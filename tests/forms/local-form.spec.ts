@@ -7,11 +7,6 @@ test.describe('Local QA Form', () => {
 
   test('✅ Submits when all required fields are filled', async ({ page }) => {
     await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
-    ...
-  });
-
-  // All other local form tests here...
-});
 
     await page.locator('#name').fill('Jacob');
     await page.locator('#email').fill('jacob@example.com');
