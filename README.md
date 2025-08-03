@@ -49,7 +49,26 @@ tests/
 │   └─ docs-menu.spec.ts
 ```
 
-## 🧪 Tags & Filtering (Coming Soon)
+## 🎯 Test Filtering with Tags
+
+You can run specific categories of tests using Playwright’s `--grep` flag.
+
+### Run only core tests (CI-safe):
+```bash
+npx playwright test --grep @core
+```
+
+### Run only tests that depend on a local file:
+```bash
+npx playwright test --grep @local
+```
+
+### Run all tests except flaky or demo-tagged ones:
+```bash
+npx playwright test --grep-invert @flaky
+```
+
+> Tags are added to test titles like `[core]`, `[local]`, `[demo]`, etc.
 
 You’ll be able to run subsets like:
 
