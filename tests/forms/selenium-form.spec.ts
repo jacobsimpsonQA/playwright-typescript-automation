@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const isCI = !!process.env.CI;
 
 test.describe('Selenium Web Form Tests', () => {
-  test('✅ Submits form successfully with all fields filled', async ({ page }) => {
+  test('[core] ✅ Submits form successfully with all fields filled', async ({ page }) => {
     await page.goto('https://www.selenium.dev/selenium/web/web-form.html');
     await page.locator('#my-text-id').fill('Jacob');
     await page.locator('[name="my-password"]').fill('Secret123!');
@@ -18,7 +18,7 @@ test.describe('Selenium Web Form Tests', () => {
 
  // Skip just this one test in CI
   (isCI ? test.skip : test)(
-    '❌ Fails to submit when required password is missing',
+    '[core] ❌ Fails to submit when required password is missing',
     async ({ page }) => {
       await page.locator('#my-text-id').fill('Jacob');
       // Password intentionally left blank

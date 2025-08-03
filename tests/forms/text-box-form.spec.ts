@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('fill out and submit the text box form', async ({ page }) => {
+test('[core] fill out and submit the text box form', async ({ page }) => {
     await page.goto('https://demoqa.com/text-box');
 
     // Fill out the form
