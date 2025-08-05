@@ -17,12 +17,18 @@ It supports:
 
 ## 🧪 Local Form Testing
 
-Includes tests for a custom offline form (`local_qa_form.html`) that validates:
+Includes tests for a custom offline form (`local_qa_form.html`), now hosted live at:
+🔗 https://jacobsimpsonqa.github.io/playwright-form-preview/
+
+Tests validate:
 - Required field behavior
 - Positive flow (valid name + email)
 - Negative flows:
   - Missing name
   - Missing both fields
+  - Invalid email format
+  - Whitespace-only name (new!)
+
 
 ## ✅ CI-Enabled
 
