@@ -27,7 +27,7 @@ test.describe('Local QA Form', () => {
 });
 
   test('[local] ❌ Does not show success if name is missing', async ({ page }) => {
-    await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+    await page.goto('https://jacobsimpsonqa.github.io/playwright-form-preview/');
 
     // leave name blank
     await page.locator('#email').fill('jacob@example.com');
@@ -37,7 +37,7 @@ test.describe('Local QA Form', () => {
   });
 
     test('[local] ❌ Does not show success if both name and email are missing', async ({ page }) => {
-    await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+    await page.goto('https://jacobsimpsonqa.github.io/playwright-form-preview/');
 
     // Leave both fields blank
     await page.getByRole('button', { name: 'Submit' }).click();
@@ -46,13 +46,23 @@ test.describe('Local QA Form', () => {
   });
 
   test('[local] ❌ Does not show success with invalid email format', async ({ page }) => {
-  await page.goto('file:///Users/fettywaffles/Downloads/local_qa_form.html');
+  await page.goto('https://jacobsimpsonqa.github.io/playwright-form-preview/');
 
   await page.locator('#name').fill('Jacob');
   await page.locator('#email').fill('jacob@'); // invalid
   await page.getByRole('button', { name: 'Submit' }).click();
 
   await expect(page.locator('#success')).not.toBeVisible();
+});
+
+test('❌ Does not show success with whitespace-only name', async ({ page }) => {
+  await page.goto('https://jacobsimpsonqa.github.io/playwright-form-preview/');
+
+  await page.locator('#name').fill('     ');
+  await page.locator('#email').fill('jacob@example.com');
+  await page.getByRole('button', { name: 'Submit' }).click();
+
+  await expect(page.locator('#success-message')).not.toBeVisible();
 });
 
 });
