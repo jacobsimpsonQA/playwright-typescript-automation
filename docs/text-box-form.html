@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Text Box Form</title>
+</head>
+<body>
+  <form id="userForm">
+    <input type="text" placeholder="Full Name" id="userName" required />
+    <input type="email" placeholder="name@example.com" id="email" required />
+    <textarea id="currentAddress" placeholder="Current Address"></textarea>
+    <textarea id="permanentAddress" placeholder="Permanent Address"></textarea>
+    <input type="file" id="uploadFile" />
+    <button type="submit" role="button">Submit</button>
+    <div id="output" style="display: none;">Form submitted</div>
+  </form>
+
+  <script>
+    const form = document.getElementById('userForm');
+    const output = document.getElementById('output');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (name && email) {
+        output.style.display = 'block';
+      } else {
+        output.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
